@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fellyph Cintra | Front-end Developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Fellyph Cintra, Front-end Developer, featuring latest projects and blog posts."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <nav class="nav-container">
+          <div class="logo">FC</div>
+          <ul class="nav-links">
+            <li><a href="#hero">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#blog">Blog</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <section id="hero" class="hero-section">
+          <div class="hero-content">
+            <h1 class="hero-title">
+              Fellyph <span class="gradient-text">Cintra</span>
+            </h1>
+            <p class="hero-subtitle">
+              Senior Front-end Developer & WordPress Expert
+            </p>
+            <div class="hero-cta">
+              <a href="#projects" class="btn btn-primary">View My Work</a>
+              <a href="#blog" class="btn btn-secondary">Read My Blog</a>
+            </div>
+          </div>
+          <div class="hero-image-container">
+            <!-- Profile image will go here -->
+            <div class="profile-glow"></div>
+          </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+          <div class="section-container">
+            <h2 class="section-title">
+              Latest <span class="gradient-text">Projects</span>
+            </h2>
+            <div class="projects-grid" id="projects-grid">
+              <!-- Projects will be injected here or hardcoded -->
+              <article class="project-card">
+                <div
+                  class="project-image"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #667eea 0%,
+                      #764ba2 100%
+                    );
+                  "
+                ></div>
+                <div class="project-info">
+                  <h3>WordPress Playground</h3>
+                  <p>Contributing to the future of WordPress in the browser.</p>
+                  <div class="project-tags">
+                    <span>WebAssembly</span>
+                    <span>WordPress</span>
+                  </div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div
+                  class="project-image"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #ff9a9e 0%,
+                      #fecfef 99%,
+                      #fecfef 100%
+                    );
+                  "
+                ></div>
+                <div class="project-info">
+                  <h3>Gutenberg Blocks</h3>
+                  <p>Advanced block development for the WordPress editor.</p>
+                  <div class="project-tags">
+                    <span>React</span>
+                    <span>PHP</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="blog" class="blog-section">
+          <div class="section-container">
+            <h2 class="section-title">
+              From the <span class="gradient-text">Blog</span>
+            </h2>
+            <div class="blog-grid" id="blog-posts">
+              <!-- Blog posts injected via JS -->
+              <div class="loader">Loading latest posts...</div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <p>&copy; 2025 Fellyph Cintra. Built with passion.</p>
+          <div class="social-links">
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">Twitter</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

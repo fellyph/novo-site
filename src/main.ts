@@ -31,17 +31,17 @@ async function fetchPosts() {
       });
 
       card.innerHTML = `
-        <span class="post-date" style="font-size: 0.8rem; color: var(--text-muted);">${date}</span>
+        <span class="blog-date" style="font-size: 0.8rem; color: var(--text-muted);">${date}</span>
         <h3>${post.title.rendered}</h3>
-        <div class="post-excerpt">${post.excerpt.rendered}</div>
-        <a href="${post.link}" target="_blank" class="read-more">Read More →</a>
+        <div class="blog-excerpt">${post.excerpt.rendered}</div>
+        <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="read-more">Read More →</a>
       `;
       
       blogContainer.appendChild(card);
     });
   } catch (error) {
     console.error('Error fetching posts:', error);
-    blogContainer.innerHTML = '<p class="error">Failed to load blog posts. Please try again later.</p>';
+    blogContainer.innerHTML = '<p class="error">Unable to load blog posts. Please try again later.</p>';
   }
 }
 
@@ -66,8 +66,12 @@ function initTheme() {
 }
 
 // Initialize
-document.addEventListener('DOMContentLoaded', () => {
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    fetchPosts();
+  });
+} else {
   initTheme();
   fetchPosts();
-});
-
+}

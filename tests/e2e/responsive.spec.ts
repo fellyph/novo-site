@@ -1,9 +1,23 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Responsive Design - Mobile', () => {
-  test.use({ viewport: { width: 375, height: 667 } });
-
   test.beforeEach(async ({ page }) => {
+    // Mock successful API response
+    await page.route('**/wp-json/wp/v2/posts**', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify([
+          {
+            id: 1,
+            title: { rendered: 'Test Post 1' },
+            excerpt: { rendered: '<p>This is a test excerpt for post 1.</p>' },
+            link: 'https://example.com/post1',
+            date: '2025-01-01T12:00:00'
+          }
+        ])
+      });
+    });
     await page.goto('/');
   });
 

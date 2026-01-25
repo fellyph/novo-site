@@ -2,10 +2,6 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Theme Toggle', () => {
   test.beforeEach(async ({ page }) => {
-    // Clear localStorage before each test
-    await page.addInitScript(() => {
-      window.localStorage.clear();
-    });
     await page.goto('/');
   });
 
@@ -67,16 +63,20 @@ test.describe('Theme Toggle', () => {
     await expect(html).toHaveAttribute('data-theme', 'light');
   });
 
-  test('should update toggle button text based on theme', async ({ page }) => {
+  test('should update toggle button icon based on theme', async ({ page }) => {
     const themeToggle = page.locator('#theme-toggle');
+    const sunIcon = themeToggle.locator('.sun-icon');
+    const moonIcon = themeToggle.locator('.moon-icon');
 
-    // Dark theme should show sun icon (switch to light)
-    await expect(themeToggle).toContainText('Light');
+    // Default is Dark theme -> Moon icon visible
+    await expect(moonIcon).toBeVisible();
+    await expect(sunIcon).not.toBeVisible();
 
     // Switch to light
     await themeToggle.click();
 
-    // Light theme should show moon icon (switch to dark)
-    await expect(themeToggle).toContainText('Dark');
+    // Light theme -> Sun icon visible
+    await expect(sunIcon).toBeVisible();
+    await expect(moonIcon).not.toBeVisible();
   });
 });

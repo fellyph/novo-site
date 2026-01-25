@@ -2,6 +2,29 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Blog Section', () => {
   test.beforeEach(async ({ page }) => {
+    // Mock successful API response
+    await page.route('**/wp-json/wp/v2/posts?per_page=6', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify([
+          {
+            id: 1,
+            title: { rendered: 'Test Post 1' },
+            excerpt: { rendered: '<p>This is a test excerpt for post 1.</p>' },
+            link: 'https://example.com/post1',
+            date: '2025-01-01T12:00:00'
+          },
+          {
+            id: 2,
+            title: { rendered: 'Test Post 2' },
+            excerpt: { rendered: '<p>This is a test excerpt for post 2.</p>' },
+            link: 'https://example.com/post2',
+            date: '2025-01-02T12:00:00'
+          }
+        ])
+      });
+    });
     await page.goto('/');
   });
 
